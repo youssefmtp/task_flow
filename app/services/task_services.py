@@ -12,6 +12,8 @@ class TaskService:
     def create_task(self, task_type:str, payload:dict) -> Task:
             task = Task(task_type = task_type, payload = payload)
 
+            task.status = "PENDING"
+            
             try:
                 self.repository.add(task)
                 self.repository.commit()
